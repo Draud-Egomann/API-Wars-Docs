@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" data-lt-installed="true"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="http://192.168.100.13:2000/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>theship cockpit</title>
+    <script type="module" crossorigin="" src="Easy-Steering-Dateien/index-e269276f.js"></script>
+    <link rel="stylesheet" href="Easy-Steering-Dateien/index-584673a8.css">
+  </head>
+  <body>
+    <div id="app"><h1>The Ship - Documentation</h1><a href="http://192.168.100.13:2000/">home</a><h2>Documentation</h2><div class="documentation"><pre><code>## set target to fly to
+
+```shell
+$ curl -XPOST http://192.168.100.13:2009/set_target --data '{"target": "idle"}'
+{"kind": "success"}
+
+$ curl -XPOST http://192.168.100.13:2009/set_target --data '{"target": "stop"}'
+{"kind": "success"}
+
+$ curl -XPOST http://192.168.100.13:2009/set_target --data '{"target": "Core Station"}'
+{"kind": "success"}
+
+$ curl -XPOST http://192.168.100.13:2009/set_target --data '{"target": "station 1"}'
+{"kind": "success"}
+
+$ curl -XPOST http://192.168.100.13:2009/set_target --data '{"target": "Vesta Station"}'
+{"kind": "success"}
+
+$ curl -XPOST http://192.168.100.13:2009/set_target --data '{"target": {"x": 100, "y": 100}}'
+{"kind": "success"}
+```
+</code></pre></div><h2>Widget</h2><div style="display: grid; grid-template-columns: min-content auto; gap: 1em;"><div class="widgets" style="display: grid; grid-template-columns: unset; grid-auto-columns: 6em; grid-template-rows: min-content;"><div class="widget" style="grid-area: span 6 / span 3;"><div class="title">Easy Steering</div><div class="actions"><a href="http://192.168.100.13:2000/doc/Easy%20Steering/0">doc</a><span>|</span><a href="http://192.168.100.13:2000/widget/Easy%20Steering/0">max</a></div><div class="content"><div><div>SpecialTarget.STOP</div><div class="button unpressed">idle</div><div class="button pressed">stop</div><div class="button unpressed">Core Station</div><div class="button unpressed">Vesta Station</div><div class="button unpressed">Azura Station</div></div></div></div></div><div style="overflow-x: auto;"><pre>{
+  "title": "Easy Steering",
+  "group": "user",
+  "width": 3,
+  "height": 4,
+  "content": {
+    "kind": "stack",
+    "content": [
+      {
+        "kind": "text",
+        "text": "SpecialTarget.STOP"
+      },
+      {
+        "kind": "button",
+        "id": "{\"action\": \"idle\"}",
+        "text": "idle",
+        "pressed": false
+      },
+      {
+        "kind": "button",
+        "id": "{\"action\": \"stop\"}",
+        "text": "stop",
+        "pressed": true
+      },
+      {
+        "kind": "button",
+        "id": "{\"action\": \"goto\", \"name\": \"Core Station\"}",
+        "text": "Core Station",
+        "pressed": false
+      },
+      {
+        "kind": "button",
+        "id": "{\"action\": \"goto\", \"name\": \"Vesta Station\"}",
+        "text": "Vesta Station",
+        "pressed": false
+      },
+      {
+        "kind": "button",
+        "id": "{\"action\": \"goto\", \"name\": \"Azura Station\"}",
+        "text": "Azura Station",
+        "pressed": false
+      }
+    ]
+  }
+}</pre></div></div></div>
+    <script type="text/javascript">
+      window.global ||= window;
+    </script>
+    
+  
+
+</body></html>

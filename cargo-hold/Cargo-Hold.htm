@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en" data-lt-installed="true"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="http://192.168.100.13:2000/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>theship cockpit</title>
+    <script type="module" crossorigin="" src="Cargo-Hold-Dateien/index-e269276f.js"></script>
+    <link rel="stylesheet" href="Cargo-Hold-Dateien/index-584673a8.css">
+  </head>
+  <body>
+    <div id="app"><h1>The Ship - Documentation</h1><a href="http://192.168.100.13:2000/">home</a><h2>Documentation</h2><div class="documentation"><h2>Inhalt des Cargo Holds</h2>
+<pre><div style="color: black; background: rgb(245, 242, 240); text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; margin: 0.5em 0px; overflow: auto;"><code class="language-shell" style="color: black; background: none; text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none;"><span>$ </span><span class="token" style="color: rgb(221, 74, 104);">curl</span><span> http://192.168.100.13:2012/hold
+</span><span></span><span class="token" style="color: rgb(153, 153, 153);">{</span><span class="token" style="color: rgb(102, 153, 0);">"kind"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(102, 153, 0);">"success"</span><span>, </span><span class="token" style="color: rgb(102, 153, 0);">"hold"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(153, 153, 153);">{</span><span class="token" style="color: rgb(102, 153, 0);">"resources"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(153, 153, 153);">{</span><span class="token" style="color: rgb(102, 153, 0);">"IRON"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(153, 0, 85);">1</span><span class="token" style="color: rgb(153, 153, 153);">}</span><span>, </span><span class="token" style="color: rgb(102, 153, 0);">"credits"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(153, 0, 85);">55</span><span>, </span><span class="token" style="color: rgb(102, 153, 0);">"hold_size"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(153, 0, 85);">40</span><span>, </span><span class="token" style="color: rgb(102, 153, 0);">"hold_free"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(153, 0, 85);">39</span><span class="token" style="color: rgb(153, 153, 153);">}</span><span class="token" style="color: rgb(153, 153, 153);">}</span></code></div></pre>
+<h2>Struktur des Cargo Holds</h2>
+<p>Schön, dass sie sich für den modernen zweidimensionalen Cargo Hold entschieden haben.
+Er bietet viel mehr Platz als herkömmliche Cargo-Holds.</p>
+<p>Achten sie bitte darauf, dass der Lade- und Entladeroboter nur über 
+den Zugang oben auf die Waren zugreifen kann (er ist angrenzend an die 
+oberste Reihe 0).</p>
+<p>Der Umräumroboter und der Entladeroboter kann sich nur Horizontal und
+ Vertikal bewegen. Achten sie also darauf, dass wichtige Ware nicht 
+hinter anderen Waren zugestellt wird.</p>
+<pre><div style="color: black; background: rgb(245, 242, 240); text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; margin: 0.5em 0px; overflow: auto;"><code class="language-shell" style="color: black; background: none; text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none;"><span>$ </span><span class="token" style="color: rgb(221, 74, 104);">curl</span><span> http://192.168.100.13:2012/structure
+</span><span></span><span class="token" style="color: rgb(153, 153, 153);">{</span><span class="token" style="color: rgb(102, 153, 0);">"kind"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(102, 153, 0);">"success"</span><span>, </span><span class="token" style="color: rgb(102, 153, 0);">"hold"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(153, 153, 153);">[</span><span class="token" style="color: rgb(153, 153, 153);">[</span><span class="token" style="color: rgb(102, 153, 0);">"GOLD"</span><span>, null</span><span class="token" style="color: rgb(153, 153, 153);">]</span><span>, </span><span class="token" style="color: rgb(153, 153, 153);">[</span><span class="token" style="color: rgb(102, 153, 0);">"IRON"</span><span>, null</span><span class="token" style="color: rgb(153, 153, 153);">]</span><span class="token" style="color: rgb(153, 153, 153);">]</span><span class="token" style="color: rgb(153, 153, 153);">}</span></code></div></pre>
+<pre><div style="color: black; background: rgb(245, 242, 240); text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; margin: 0.5em 0px; overflow: auto;"><code class="language-shell" style="color: black; background: none; text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none;"><span>$ </span><span class="token" style="color: rgb(221, 74, 104);">curl</span><span> -XPOST http://192.168.100.13:2012/swap_adjacent --data </span><span class="token" style="color: rgb(102, 153, 0);">'{"a": {"x": 0, "y": 1}, "b": {"x": 1, "y": 1}}'</span><span>
+</span><span></span><span class="token" style="color: rgb(153, 153, 153);">{</span><span class="token" style="color: rgb(102, 153, 0);">"kind"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(102, 153, 0);">"success"</span><span class="token" style="color: rgb(153, 153, 153);">}</span></code></div></pre></div><h2>Widget</h2><div style="display: grid; grid-template-columns: min-content auto; gap: 1em;"><div class="widgets" style="display: grid; grid-template-columns: unset; grid-auto-columns: 6em; grid-template-rows: min-content;"><div class="widget" style="grid-area: span 12 / span 5;"><div class="title">Cargo Hold</div><div class="actions"><a href="http://192.168.100.13:2000/doc/Cargo%20Hold/0">doc</a><span>|</span><a href="http://192.168.100.13:2000/widget/Cargo%20Hold/0">max</a></div><div class="content"><div><table><tbody><tr><td><div>Credits</div></td><td><div>4259</div></td></tr><tr><td><div>Used/Capacity</div></td><td><div>118/120</div></td></tr></tbody></table><table><tbody><tr><td><div style="font-weight: bolder;">&nbsp;</div></td><td><div style="font-weight: bolder;">0</div></td><td><div style="font-weight: bolder;">1</div></td><td><div style="font-weight: bolder;">2</div></td><td><div style="font-weight: bolder;">3</div></td><td><div style="font-weight: bolder;">4</div></td><td><div style="font-weight: bolder;">5</div></td><td><div style="font-weight: bolder;">6</div></td><td><div style="font-weight: bolder;">7</div></td><td><div style="font-weight: bolder;">8</div></td><td><div style="font-weight: bolder;">9</div></td><td><div style="font-weight: bolder;">10</div></td><td><div style="font-weight: bolder;">11</div></td></tr><tr><td><div style="font-weight: bolder;">0</div></td><td><div>S</div></td><td><div>G</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td></tr><tr><td><div style="font-weight: bolder;">1</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>G</div></td><td><div>S</div></td><td><div>S</div></td><td><div>&nbsp;</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td></tr><tr><td><div style="font-weight: bolder;">2</div></td><td><div>S</div></td><td><div>G</div></td><td><div>S</div></td><td><div>G</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td></tr><tr><td><div style="font-weight: bolder;">3</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td></tr><tr><td><div style="font-weight: bolder;">4</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td></tr><tr><td><div style="font-weight: bolder;">5</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>G</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td></tr><tr><td><div style="font-weight: bolder;">6</div></td><td><div>S</div></td><td><div>S</div></td><td><div>G</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td></tr><tr><td><div style="font-weight: bolder;">7</div></td><td><div>&nbsp;</div></td><td><div>S</div></td><td><div>S</div></td><td><div>G</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td></tr><tr><td><div style="font-weight: bolder;">8</div></td><td><div>S</div></td><td><div>S</div></td><td><div>G</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td></tr><tr><td><div style="font-weight: bolder;">9</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>G</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td><td><div>S</div></td></tr></tbody></table><table><thead><tr><td><div>Resource</div></td><td><div>In hold</div></td></tr></thead><tbody><tr><td><div>Gold</div></td><td><div>9</div></td></tr><tr><td><div>Stein</div></td><td><div>109</div></td></tr></tbody></table><table><thead><tr><td><div>Item</div></td><td><div>Description</div></td></tr></thead><tbody><tr><td><div>Permastore</div></td><td><div>Modul, um Daten zu transferieren</div></td></tr><tr><td><div>Scanner TX1000</div></td><td><div>Scannt was das Zeugs hält</div></td></tr><tr><td><div>Scotty auf Steroiden</div></td><td><div>Mit diesem Addon wird der Antrieb um 10% verbessert</div></td></tr><tr><td><div>Comm Module Core Station</div></td><td><div>Implementation des Core Station Kommunikationsstandards</div></td></tr><tr><td><div>Laderaumanbau</div></td><td><div>Vergrössert den Laderaum um +12</div></td></tr><tr><td><div>Abbaulaser</div></td><td><div>Laser, um Hindernisse aus dem Weg zu Räumen</div></td></tr><tr><td><div>Comm Module Azura</div></td><td><div>Implementation des Azura Kommunikationsstandards</div></td></tr><tr><td><div>Thrust o Matic T33</div></td><td><div>Mit diesem Wundergerät wird der Antrieb um 10% verbessert</div></td></tr><tr><td><div>Laderaum X3000</div></td><td><div>Durch Nutzung der Höhe vergrössert sich der Laderaum um +96</div></td></tr><tr><td><div>Getunter Cargo-Bot</div></td><td><div>Durch präzisere Kalibrierung des Roboters beschleunigt sich der Sortierroboter um 10%</div></td></tr><tr><td><div>Laser Kalibrierung</div></td><td><div>Durch präzisere Kalibrierung des Lasers beschleunigt sich der Abbau mit dem Laser um 20%</div></td></tr><tr><td><div>Geölter Cargo-Bot</div></td><td><div>Durch präzisere Ölung des Roboters beschleunigt sich der Sortierroboter um 10%</div></td></tr></tbody></table></div></div></div></div><div style="overflow-x: auto;"><pre>{
+  "title": "Cargo Hold",
+  "group": "user",
+  "width": 5,
+  "height": 10,
+  "content": {
+    "kind": "stack",
+    "content": [
+      {
+        "kind": "table",
+        "header": null,
+        "rows": [
+          [
+            {
+              "kind": "text",
+              "text": "Credits"
+            },
+            {
+              "kind": "text",
+              "text": "4259"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "Used/Capacity"
+            },
+            {
+              "kind": "text",
+              "text": "118/120"
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "table",
+        "header": null,
+        "rows": [
+          [
+            {
+              "kind": "text",
+              "text": "",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "0",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "1",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "2",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "3",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "4",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "5",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "6",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "7",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "8",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "9",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "10",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "11",
+              "style": "bold"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "0",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "G"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "1",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "G"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "&nbsp;"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "2",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "G"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "G"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "3",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "4",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "5",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "G"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "6",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "G"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "7",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "&nbsp;"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "G"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "8",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "G"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "9",
+              "style": "bold"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "G"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            },
+            {
+              "kind": "text",
+              "text": "S"
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "table",
+        "header": [
+          {
+            "kind": "text",
+            "text": "Resource"
+          },
+          {
+            "kind": "text",
+            "text": "In hold"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "kind": "text",
+              "text": "Gold"
+            },
+            {
+              "kind": "text",
+              "text": "9"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "Stein"
+            },
+            {
+              "kind": "text",
+              "text": "109"
+            }
+          ]
+        ]
+      },
+      {
+        "kind": "table",
+        "header": [
+          {
+            "kind": "text",
+            "text": "Item"
+          },
+          {
+            "kind": "text",
+            "text": "Description"
+          }
+        ],
+        "rows": [
+          [
+            {
+              "kind": "text",
+              "text": "Permastore"
+            },
+            {
+              "kind": "text",
+              "text": "Modul, um Daten zu transferieren"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "Scanner TX1000"
+            },
+            {
+              "kind": "text",
+              "text": "Scannt was das Zeugs hält"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "Scotty auf Steroiden"
+            },
+            {
+              "kind": "text",
+              "text": "Mit diesem Addon wird der Antrieb um 10% verbessert"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "Comm Module Core Station"
+            },
+            {
+              "kind": "text",
+              "text": "Implementation des Core Station Kommunikationsstandards"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "Laderaumanbau"
+            },
+            {
+              "kind": "text",
+              "text": "Vergrössert den Laderaum um +12"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "Abbaulaser"
+            },
+            {
+              "kind": "text",
+              "text": "Laser, um Hindernisse aus dem Weg zu Räumen"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "Comm Module Azura"
+            },
+            {
+              "kind": "text",
+              "text": "Implementation des Azura Kommunikationsstandards"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "Thrust o Matic T33"
+            },
+            {
+              "kind": "text",
+              "text": "Mit diesem Wundergerät wird der Antrieb um 10% verbessert"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "Laderaum X3000"
+            },
+            {
+              "kind": "text",
+              "text": "Durch Nutzung der Höhe vergrössert sich der Laderaum um +96"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "Getunter Cargo-Bot"
+            },
+            {
+              "kind": "text",
+              "text": "Durch präzisere Kalibrierung des Roboters beschleunigt sich der Sortierroboter um 10%"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "Laser Kalibrierung"
+            },
+            {
+              "kind": "text",
+              "text": "Durch präzisere Kalibrierung des Lasers beschleunigt sich der Abbau mit dem Laser um 20%"
+            }
+          ],
+          [
+            {
+              "kind": "text",
+              "text": "Geölter Cargo-Bot"
+            },
+            {
+              "kind": "text",
+              "text": "Durch präzisere Ölung des Roboters beschleunigt sich der Sortierroboter um 10%"
+            }
+          ]
+        ]
+      }
+    ]
+  }
+}</pre></div></div></div>
+    <script type="text/javascript">
+      window.global ||= window;
+    </script>
+    
+  
+
+</body></html>

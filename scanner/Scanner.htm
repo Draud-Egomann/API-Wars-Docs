@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" data-lt-installed="true"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="http://192.168.100.13:2000/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>theship cockpit</title>
+    <script type="module" crossorigin="" src="Scanner-Dateien/index-e269276f.js"></script>
+    <link rel="stylesheet" href="Scanner-Dateien/index-584673a8.css">
+  </head>
+  <body>
+    <div id="app"><h1>The Ship - Documentation</h1><a href="http://192.168.100.13:2000/">home</a><h2>Documentation</h2><div class="documentation"><h1>Dependencies</h1>
+<ul>
+<li>Advanced Message Queuing Protocol (AMQP) Broker (e.g. <a href="https://www.rabbitmq.com/">RabbitMQ</a>), to publish the found objects</li>
+</ul>
+<h1>Examples</h1>
+<p>These examples use <a href="https://pypi.org/project/pika/">pika</a>.
+The server uses an exchange for Publish/Subscribe. This tutorial may be of interest: <a href="https://www.rabbitmq.com/tutorials/tutorial-three-python.html">https://www.rabbitmq.com/tutorials/tutorial-three-python.html</a>.</p>
+<pre><div style="color: black; background: rgb(245, 242, 240); text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; margin: 0.5em 0px; overflow: auto;"><code class="language-python" style="color: black; background: none; text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none;"><span class="token" style="color: rgb(0, 119, 170);">import</span><span> pika
+</span><span></span><span class="token" style="color: rgb(0, 119, 170);">import</span><span> json
+</span>
+<span>connection </span><span class="token" style="color: rgb(154, 110, 58); background: rgba(255, 255, 255, 0.5);">=</span><span> pika</span><span class="token" style="color: rgb(153, 153, 153);">.</span><span>BlockingConnection</span><span class="token" style="color: rgb(153, 153, 153);">(</span><span>pika</span><span class="token" style="color: rgb(153, 153, 153);">.</span><span>ConnectionParameters</span><span class="token" style="color: rgb(153, 153, 153);">(</span><span>host</span><span class="token" style="color: rgb(154, 110, 58); background: rgba(255, 255, 255, 0.5);">=</span><span class="token" style="color: rgb(102, 153, 0);">"192.168.100.13"</span><span class="token" style="color: rgb(153, 153, 153);">,</span><span> port</span><span class="token" style="color: rgb(154, 110, 58); background: rgba(255, 255, 255, 0.5);">=</span><span class="token" style="color: rgb(153, 0, 85);">2014</span><span class="token" style="color: rgb(153, 153, 153);">)</span><span class="token" style="color: rgb(153, 153, 153);">)</span><span>
+</span><span>channel </span><span class="token" style="color: rgb(154, 110, 58); background: rgba(255, 255, 255, 0.5);">=</span><span> connection</span><span class="token" style="color: rgb(153, 153, 153);">.</span><span>channel</span><span class="token" style="color: rgb(153, 153, 153);">(</span><span class="token" style="color: rgb(153, 153, 153);">)</span><span>
+</span>
+<span>channel</span><span class="token" style="color: rgb(153, 153, 153);">.</span><span>exchange_declare</span><span class="token" style="color: rgb(153, 153, 153);">(</span><span>exchange</span><span class="token" style="color: rgb(154, 110, 58); background: rgba(255, 255, 255, 0.5);">=</span><span class="token" style="color: rgb(102, 153, 0);">'scanner/detected_objects'</span><span class="token" style="color: rgb(153, 153, 153);">,</span><span> exchange_type</span><span class="token" style="color: rgb(154, 110, 58); background: rgba(255, 255, 255, 0.5);">=</span><span class="token" style="color: rgb(102, 153, 0);">'fanout'</span><span class="token" style="color: rgb(153, 153, 153);">)</span><span>
+</span><span>result </span><span class="token" style="color: rgb(154, 110, 58); background: rgba(255, 255, 255, 0.5);">=</span><span> channel</span><span class="token" style="color: rgb(153, 153, 153);">.</span><span>queue_declare</span><span class="token" style="color: rgb(153, 153, 153);">(</span><span>queue</span><span class="token" style="color: rgb(154, 110, 58); background: rgba(255, 255, 255, 0.5);">=</span><span class="token" style="color: rgb(102, 153, 0);">''</span><span class="token" style="color: rgb(153, 153, 153);">,</span><span> exclusive</span><span class="token" style="color: rgb(154, 110, 58); background: rgba(255, 255, 255, 0.5);">=</span><span class="token" style="color: rgb(153, 0, 85);">True</span><span class="token" style="color: rgb(153, 153, 153);">)</span><span>
+</span><span>queue_name </span><span class="token" style="color: rgb(154, 110, 58); background: rgba(255, 255, 255, 0.5);">=</span><span> result</span><span class="token" style="color: rgb(153, 153, 153);">.</span><span>method</span><span class="token" style="color: rgb(153, 153, 153);">.</span><span>queue
+</span><span>channel</span><span class="token" style="color: rgb(153, 153, 153);">.</span><span>queue_bind</span><span class="token" style="color: rgb(153, 153, 153);">(</span><span>exchange</span><span class="token" style="color: rgb(154, 110, 58); background: rgba(255, 255, 255, 0.5);">=</span><span class="token" style="color: rgb(102, 153, 0);">'scanner/detected_objects'</span><span class="token" style="color: rgb(153, 153, 153);">,</span><span> queue</span><span class="token" style="color: rgb(154, 110, 58); background: rgba(255, 255, 255, 0.5);">=</span><span>queue_name</span><span class="token" style="color: rgb(153, 153, 153);">)</span><span>
+</span>
+<span></span><span class="token" style="color: rgb(0, 119, 170);">for</span><span> method_frame</span><span class="token" style="color: rgb(153, 153, 153);">,</span><span> properties</span><span class="token" style="color: rgb(153, 153, 153);">,</span><span> body </span><span class="token" style="color: rgb(0, 119, 170);">in</span><span> channel</span><span class="token" style="color: rgb(153, 153, 153);">.</span><span>consume</span><span class="token" style="color: rgb(153, 153, 153);">(</span><span>queue</span><span class="token" style="color: rgb(154, 110, 58); background: rgba(255, 255, 255, 0.5);">=</span><span>queue_name</span><span class="token" style="color: rgb(153, 153, 153);">,</span><span> auto_ack</span><span class="token" style="color: rgb(154, 110, 58); background: rgba(255, 255, 255, 0.5);">=</span><span class="token" style="color: rgb(153, 0, 85);">True</span><span class="token" style="color: rgb(153, 153, 153);">)</span><span class="token" style="color: rgb(153, 153, 153);">:</span><span>
+</span><span>    </span><span class="token" style="color: rgb(0, 119, 170);">print</span><span class="token" style="color: rgb(153, 153, 153);">(</span><span>json</span><span class="token" style="color: rgb(153, 153, 153);">.</span><span>loads</span><span class="token" style="color: rgb(153, 153, 153);">(</span><span>body</span><span class="token" style="color: rgb(153, 153, 153);">.</span><span>decode</span><span class="token" style="color: rgb(153, 153, 153);">(</span><span class="token" style="color: rgb(102, 153, 0);">'utf-8'</span><span class="token" style="color: rgb(153, 153, 153);">)</span><span class="token" style="color: rgb(153, 153, 153);">)</span><span class="token" style="color: rgb(153, 153, 153);">)</span><span>
+</span></code></div></pre>
+<p>Result:</p>
+<pre><div style="color: black; background: rgb(245, 242, 240); text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; margin: 0.5em 0px; overflow: auto;"><code class="language-shell" style="color: black; background: none; text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none;"><span>$ ./example.py
+</span><span></span><span class="token" style="color: rgb(153, 153, 153);">[</span><span class="token" style="color: rgb(153, 153, 153);">{</span><span class="token" style="color: rgb(102, 153, 0);">'name'</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(102, 153, 0);">'Core Station'</span><span>, </span><span class="token" style="color: rgb(102, 153, 0);">'pos'</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(153, 153, 153);">{</span><span class="token" style="color: rgb(102, 153, 0);">'x'</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(153, 0, 85);">0.0</span><span>, </span><span class="token" style="color: rgb(102, 153, 0);">'y'</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(153, 0, 85);">0.0</span><span class="token" style="color: rgb(153, 153, 153);">}</span><span class="token" style="color: rgb(153, 153, 153);">}</span><span class="token" style="color: rgb(153, 153, 153);">]</span><span>
+</span><span></span><span class="token" style="color: rgb(153, 153, 153);">[</span><span class="token" style="color: rgb(153, 153, 153);">{</span><span class="token" style="color: rgb(102, 153, 0);">'name'</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(102, 153, 0);">'Core Station'</span><span>, </span><span class="token" style="color: rgb(102, 153, 0);">'pos'</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(153, 153, 153);">{</span><span class="token" style="color: rgb(102, 153, 0);">'x'</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(153, 0, 85);">0.0</span><span>, </span><span class="token" style="color: rgb(102, 153, 0);">'y'</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(153, 0, 85);">0.0</span><span class="token" style="color: rgb(153, 153, 153);">}</span><span class="token" style="color: rgb(153, 153, 153);">}</span><span class="token" style="color: rgb(153, 153, 153);">]</span><span>
+</span><span></span><span class="token" style="color: rgb(153, 153, 153);">..</span><span>.
+</span><span></span><span class="token" style="color: rgb(153, 153, 153);">..</span><span>.</span></code></div></pre></div><h2>Widget</h2><div style="display: grid; grid-template-columns: min-content auto; gap: 1em;"><div class="widgets" style="display: grid; grid-template-columns: unset; grid-auto-columns: 6em; grid-template-rows: min-content;"><div class="widget" style="grid-area: span 6 / span 3;"><div class="title">Scanner</div><div class="actions"><a href="http://192.168.100.13:2000/doc/Scanner/0">doc</a><span>|</span><a href="http://192.168.100.13:2000/widget/Scanner/0">max</a></div><div class="content"><div><div>Status: rabbitmq: could not connect to 192.168.100.13:2014</div><table><thead><tr><td><div>name</div></td><td><div>pos</div></td></tr></thead><tbody></tbody></table></div></div></div></div><div style="overflow-x: auto;"><pre>{
+  "title": "Scanner",
+  "group": "auxiliary",
+  "width": 3,
+  "height": 4,
+  "content": {
+    "kind": "stack",
+    "content": [
+      {
+        "kind": "text",
+        "text": "Status: rabbitmq: could not connect to 192.168.100.13:2014"
+      },
+      {
+        "kind": "table",
+        "header": [
+          {
+            "kind": "text",
+            "text": "name"
+          },
+          {
+            "kind": "text",
+            "text": "pos"
+          }
+        ],
+        "rows": []
+      }
+    ]
+  }
+}</pre></div></div></div>
+    <script type="text/javascript">
+      window.global ||= window;
+    </script>
+    
+  
+
+</body></html>

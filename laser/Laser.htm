@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" data-lt-installed="true"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="http://192.168.100.13:2000/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>theship cockpit</title>
+    <script type="module" crossorigin="" src="Laser-Dateien/index-e269276f.js"></script>
+    <link rel="stylesheet" href="Laser-Dateien/index-584673a8.css">
+  </head>
+  <body>
+    <div id="app"><h1>The Ship - Documentation</h1><a href="http://192.168.100.13:2000/">home</a><h2>Documentation</h2><div class="documentation"><p>Der Laser ist ein gefährliches Stück Hardware. Um ihn einsetzen zu können muss ein Techniker sich zuerst einloggen.
+Dies ist über diese URL möglich: <a href="http://192.168.100.13:2018/login">http://192.168.100.13:2018/login</a>.</p>
+<p>Das Login verwendet oauth2 und muss zuerst konfiguriert werden:</p>
+<pre><div style="color: black; background: rgb(245, 242, 240); text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; margin: 0.5em 0px; overflow: auto;"><code class="language-shell" style="color: black; background: none; text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none;"><span>$ </span><span class="token" style="color: rgb(221, 74, 104);">curl</span><span> -XPOST http://192.168.100.13:2018/configure_oauth --data </span><span class="token" style="color: rgb(102, 153, 0);">'{"client_secret": "XXX", "authorize_url": "http://XXX:2015/authorize", "token_url": "http://XXX:2015/token"}'</span><span>
+</span><span></span><span class="token" style="color: rgb(153, 153, 153);">{</span><span class="token" style="color: rgb(102, 153, 0);">"kind"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(102, 153, 0);">"success"</span><span class="token" style="color: rgb(153, 153, 153);">}</span></code></div></pre>
+<p>Nützliche Links:</p>
+<ul>
+<li><a href="https://www.redhat.com/architect/oauth-20-authentication-keycloak">https://www.redhat.com/architect/oauth-20-authentication-keycloak</a></li>
+</ul>
+<p>Nach der Aktivierung:</p>
+<pre><div style="color: black; background: rgb(245, 242, 240); text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; margin: 0.5em 0px; overflow: auto;"><code class="language-shell" style="color: black; background: none; text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none;"><span>$ </span><span class="token" style="color: rgb(221, 74, 104);">curl</span><span> -XPOST http://192.168.100.13:2018/activate
+</span><span></span><span class="token" style="color: rgb(153, 153, 153);">{</span><span class="token" style="color: rgb(102, 153, 0);">"kind"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(102, 153, 0);">"success"</span><span class="token" style="color: rgb(153, 153, 153);">}</span></code></div></pre>
+<pre><div style="color: black; background: rgb(245, 242, 240); text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; margin: 0.5em 0px; overflow: auto;"><code class="language-shell" style="color: black; background: none; text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none;"><span>$ </span><span class="token" style="color: rgb(221, 74, 104);">curl</span><span> -XPOST http://192.168.100.13:2018/deactivate
+</span><span></span><span class="token" style="color: rgb(153, 153, 153);">{</span><span class="token" style="color: rgb(102, 153, 0);">"kind"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(102, 153, 0);">"success"</span><span class="token" style="color: rgb(153, 153, 153);">}</span></code></div></pre>
+<pre><div style="color: black; background: rgb(245, 242, 240); text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; margin: 0.5em 0px; overflow: auto;"><code class="language-shell" style="color: black; background: none; text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none;"><span>$ </span><span class="token" style="color: rgb(221, 74, 104);">curl</span><span> -XPUT --data </span><span class="token" style="color: rgb(102, 153, 0);">'{"angle": 42 }'</span><span> http://192.168.100.13:2018/angle
+</span><span></span><span class="token" style="color: rgb(153, 153, 153);">{</span><span class="token" style="color: rgb(102, 153, 0);">"kind"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(102, 153, 0);">"success"</span><span class="token" style="color: rgb(153, 153, 153);">}</span></code></div></pre>
+<pre><div style="color: black; background: rgb(245, 242, 240); text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; margin: 0.5em 0px; overflow: auto;"><code class="language-shell" style="color: black; background: none; text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none;"><span>$ </span><span class="token" style="color: rgb(221, 74, 104);">curl</span><span> http://192.168.100.13:2018/state
+</span><span></span><span class="token" style="color: rgb(153, 153, 153);">{</span><span class="token" style="color: rgb(102, 153, 0);">"kind"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> </span><span class="token" style="color: rgb(102, 153, 0);">"success"</span><span>, </span><span class="token" style="color: rgb(102, 153, 0);">"is_active"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> true, </span><span class="token" style="color: rgb(102, 153, 0);">"is_cooling_down"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> false, </span><span class="token" style="color: rgb(102, 153, 0);">"is_mining"</span><span class="token" style="color: rgb(221, 74, 104);">:</span><span> true</span><span class="token" style="color: rgb(153, 153, 153);">}</span></code></div></pre></div><h2>Widget</h2><div style="display: grid; grid-template-columns: min-content auto; gap: 1em;"><div class="widgets" style="display: grid; grid-template-columns: unset; grid-auto-columns: 6em; grid-template-rows: min-content;"><div class="widget" style="grid-area: span 4 / span 2;"><div class="title">Laser</div><div class="actions"><a href="http://192.168.100.13:2000/doc/Laser/0">doc</a><span>|</span><a href="http://192.168.100.13:2000/widget/Laser/0">max</a></div><div class="content"><div><div>Aktueller Status: Freigeschaltet, aktiv und aktiv am Abbauen</div></div></div></div></div><div style="overflow-x: auto;"><pre>{
+  "title": "Laser",
+  "group": "status-only",
+  "width": 2,
+  "height": 2,
+  "content": {
+    "kind": "stack",
+    "content": [
+      {
+        "kind": "text",
+        "text": "Aktueller Status: Freigeschaltet, aktiv und aktiv am Abbauen"
+      }
+    ]
+  }
+}</pre></div></div></div>
+    <script type="text/javascript">
+      window.global ||= window;
+    </script>
+    
+  
+
+</body></html>

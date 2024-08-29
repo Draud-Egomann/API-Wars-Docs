@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" data-lt-installed="true"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="http://192.168.100.13:2000/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>theship cockpit</title>
+    <script type="module" crossorigin="" src="Permastore-Dateien/index-e269276f.js"></script>
+    <link rel="stylesheet" href="Permastore-Dateien/index-584673a8.css">
+  </head>
+  <body>
+    <div id="app"><h1>The Ship - Documentation</h1><a href="http://192.168.100.13:2000/">home</a><h2>Documentation</h2><div class="documentation"><p>Der Permastore braucht einen S3 Storage, damit die Daten abelegt werden können.</p>
+<p>Die Konfiguration ist hardcodiert:</p>
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>host</td><td><a href="http://192.168.100.13:2016/">http://192.168.100.13:2016</a></td></tr><tr><td>bucket</td><td>theship-permastore</td></tr><tr><td>access key</td><td>theship</td></tr><tr><td>secret_key</td><td>theship1234</td></tr></tbody></table>
+<p>Der Permastore benötigt</p>
+<ul>
+<li>Ein Universal Coupler Module (das müsst ihr selber implementieren)</li>
+<li>für Station das dazugehörige Comm-Module</li>
+</ul>
+<h2>Permastore Interface</h2>
+<p>Der Permastore kann verwendet werden, um Daten, die eine Station an eine andere Senden würde Zwischenzuspeichern. Ein Beispiel</p>
+<pre><code># at Elyse Terminal
+$ curl -XPOST http://192.168.100.13:2019/download --data '{"source": "Elyse Terminal", "destination": "Artemis Station"}'
+{"kind": "success"}
+
+# at Artemis Station
+$ curl -XPOST http://192.168.100.13:2019/upload --data '{"source": "Elyse Terminal", "destination": "Artemis Station"}'
+{"kind": "success"}
+</code></pre>
+<h2>Universal Coupler Module</h2>
+<p>Das Universal Coupler Module muss eine JSON HTTP Schnittstelle implementieren:</p>
+<pre><code>$ curl -XPOST 'http://192.168.100.13:2023/Artemis%20Station/receive'
+{"kind": "success", "messages": [{"destination": "Shangris Station", "data": [0, 1, 2, 3, 4]}]}
+</code></pre>
+<pre><code>$ curl -XPOST 'http://192.168.100.13:2023/Artemis%20Station/send' --data '{"source": "Shangris Station", "data": [0, 1, 2, 3]}'
+{"kind": "success"}
+</code></pre></div><h2>Widget</h2><div style="display: grid; grid-template-columns: min-content auto; gap: 1em;"><div class="widgets" style="display: grid; grid-template-columns: unset; grid-auto-columns: 6em; grid-template-rows: min-content;"><div class="widget" style="grid-area: span 4 / span 3;"><div class="title">Permastore</div><div class="actions"><a href="http://192.168.100.13:2000/doc/Permastore/0">doc</a><span>|</span><a href="http://192.168.100.13:2000/widget/Permastore/0">max</a></div><div class="content"><div></div></div></div></div><div style="overflow-x: auto;"><pre>{
+  "title": "Permastore",
+  "group": "status-only",
+  "width": 3,
+  "height": 2,
+  "content": {
+    "kind": "stack",
+    "content": []
+  }
+}</pre></div></div></div>
+    <script type="text/javascript">
+      window.global ||= window;
+    </script>
+    
+  
+
+</body></html>

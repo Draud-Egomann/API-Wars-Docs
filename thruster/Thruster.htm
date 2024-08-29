@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" data-lt-installed="true"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="http://192.168.100.13:2000/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>theship cockpit</title>
+    <script type="module" crossorigin="" src="Thruster-Dateien/index-e269276f.js"></script>
+    <link rel="stylesheet" href="Thruster-Dateien/index-584673a8.css">
+  </head>
+  <body>
+    <div id="app"><h1>The Ship - Documentation</h1><a href="http://192.168.100.13:2000/">home</a><h2>Documentation</h2><div class="documentation"><h1>Example use</h1>
+<pre><div style="color: black; background: rgb(245, 242, 240); text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none; padding: 1em; margin: 0.5em 0px; overflow: auto;"><code class="language-shell" style="color: black; background: none; text-shadow: white 0px 1px; font-family: Consolas, Monaco, &quot;Andale Mono&quot;, &quot;Ubuntu Mono&quot;, monospace; font-size: 1em; text-align: left; white-space: pre; word-spacing: normal; word-break: normal; overflow-wrap: normal; line-height: 1.5; tab-size: 4; hyphens: none;"><span>$ </span><span class="token" style="color: rgb(221, 74, 104);">curl</span><span> -XPUT http://192.168.100.13:2003/thruster --data </span><span class="token" style="color: rgb(102, 153, 0);">'{"thrust_percent": 0}'</span><span>
+</span><span>$ </span><span class="token" style="color: rgb(221, 74, 104);">curl</span><span> -XPUT http://192.168.100.13:2003/thruster --data </span><span class="token" style="color: rgb(102, 153, 0);">'{"thrust_percent": 50}'</span><span>
+</span><span>$ </span><span class="token" style="color: rgb(221, 74, 104);">curl</span><span> -XPUT http://192.168.100.13:2003/thruster --data </span><span class="token" style="color: rgb(102, 153, 0);">'{"thrust_percent": 100}'</span></code></div></pre></div><h2>Widget</h2><div style="display: grid; grid-template-columns: min-content auto; gap: 1em;"><div class="widgets" style="display: grid; grid-template-columns: unset; grid-auto-columns: 6em; grid-template-rows: min-content;"><div class="widget" style="grid-area: span 4 / span 1;"><div class="title">Thruster back</div><div class="actions"><a href="http://192.168.100.13:2000/doc/Thruster%20back/0">doc</a><span>|</span><a href="http://192.168.100.13:2000/widget/Thruster%20back/0">max</a></div><div class="content"><div><div>0.0%</div><div class="button unpressed">Boost</div></div></div></div></div><div style="overflow-x: auto;"><pre>{
+  "title": "Thruster back",
+  "group": "auxiliary",
+  "width": 1,
+  "height": 2,
+  "content": {
+    "kind": "stack",
+    "content": [
+      {
+        "kind": "text",
+        "text": "0.0%"
+      },
+      {
+        "kind": "button",
+        "id": "boost",
+        "text": "Boost",
+        "pressed": false
+      }
+    ]
+  }
+}</pre></div></div></div>
+    <script type="text/javascript">
+      window.global ||= window;
+    </script>
+    
+  
+
+</body></html>

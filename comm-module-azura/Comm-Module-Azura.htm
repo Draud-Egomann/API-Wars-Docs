@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-lt-installed="true"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/svg+xml" href="http://192.168.100.13:2000/vite.svg">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>theship cockpit</title>
+    <script type="module" crossorigin="" src="Comm-Module-Azura-Dateien/index-e269276f.js"></script>
+    <link rel="stylesheet" href="Comm-Module-Azura-Dateien/index-584673a8.css">
+  </head>
+  <body>
+    <div id="app"><h1>The Ship - Documentation</h1><a href="http://192.168.100.13:2000/">home</a><h2>Documentation</h2><div class="documentation"><p>Die Azura Station nutzt ReST zur Kommunikation.</p>
+<pre><code>$ curl -XPOST http://192.168.100.13:2030/put_message --data '{"sending_station": "Shangris Station", "base64data": "dGVzdAo="}'
+{ "kind": "success" }
+</code></pre>
+<pre><code>$ curl http://192.168.100.13:2030/messages_for_other_stations
+{ "kind": "success", "received_messages": [{"dest": "Shangris Station", "base64data": "dGVzdAo="}] }
+</code></pre></div><h2>Widget</h2><div style="display: grid; grid-template-columns: min-content auto; gap: 1em;"><div class="widgets" style="display: grid; grid-template-columns: unset; grid-auto-columns: 6em; grid-template-rows: min-content;"><div class="widget" style="grid-area: span 3 / span 1;"><div class="title">Comm Module Azura</div><div class="actions"><a href="http://192.168.100.13:2000/doc/Comm%20Module%20Azura/0">doc</a><span>|</span><a href="http://192.168.100.13:2000/widget/Comm%20Module%20Azura/0">max</a></div><div class="content"><div><div>ready</div></div></div></div></div><div style="overflow-x: auto;"><pre>{
+  "title": "Comm Module Azura",
+  "group": "status-only",
+  "width": 1,
+  "height": 1,
+  "content": {
+    "kind": "stack",
+    "content": [
+      {
+        "kind": "text",
+        "text": "ready"
+      }
+    ]
+  }
+}</pre></div></div></div>
+    <script type="text/javascript">
+      window.global ||= window;
+    </script>
+    
+  
+
+</body></html>
